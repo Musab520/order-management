@@ -1,6 +1,6 @@
-package repository;
+package com.example.ordermanagement.repository;
 
-import entity.Customer;
+import com.example.ordermanagement.entity.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
