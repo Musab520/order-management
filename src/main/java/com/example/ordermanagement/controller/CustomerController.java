@@ -1,9 +1,9 @@
 package com.example.ordermanagement.controller;
 
-import com.example.ordermanagement.dto.CustomerInsertDto;
-import com.example.ordermanagement.dto.CustomerUpdateDto;
+import com.example.ordermanagement.dto.Customer.CustomerInsertDto;
+import com.example.ordermanagement.dto.Customer.CustomerUpdateDto;
 import com.example.ordermanagement.service.CustomerService;
-import com.example.ordermanagement.dto.CustomerDto;
+import com.example.ordermanagement.dto.Customer.CustomerDto;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

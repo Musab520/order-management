@@ -1,6 +1,6 @@
 package com.example.ordermanagement.security;
 
-import com.example.ordermanagement.dto.UserDto;
+import com.example.ordermanagement.dto.User.UserDto;
 import com.example.ordermanagement.service.UserService;
 import io.jsonwebtoken.ExpiredJwtException;
 import lombok.RequiredArgsConstructor;

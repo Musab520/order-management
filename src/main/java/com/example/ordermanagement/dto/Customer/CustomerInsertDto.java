@@ -1,4 +1,4 @@
-package com.example.ordermanagement.dto;
+package com.example.ordermanagement.dto.Customer;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,7 +8,7 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CustomerUpdateDto {
+public class CustomerInsertDto {
     private String firstName;
     private String lastName;
     private Date bornAt;

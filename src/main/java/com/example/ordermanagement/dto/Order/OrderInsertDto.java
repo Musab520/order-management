@@ -1,4 +1,4 @@
-package com.example.ordermanagement.dto;
+package com.example.ordermanagement.dto.Order;
 
 import com.example.ordermanagement.entity.Customer;
 import lombok.AllArgsConstructor;

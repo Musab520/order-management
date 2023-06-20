@@ -1,8 +1,8 @@
 package com.example.ordermanagement.service.impl;
 
-import com.example.ordermanagement.dto.CustomUserDetails;
-import com.example.ordermanagement.dto.UserDto;
-import com.example.ordermanagement.dto.UserInsertDto;
+import com.example.ordermanagement.dto.User.CustomUserDetails;
+import com.example.ordermanagement.dto.User.UserDto;
+import com.example.ordermanagement.dto.User.UserInsertDto;
 import com.example.ordermanagement.entity.Users;
 import com.example.ordermanagement.repository.UserRepository;
 import com.example.ordermanagement.service.UserService;

@@ -1,9 +1,9 @@
 package com.example.ordermanagement.service;
 
 
-import com.example.ordermanagement.dto.CustomerDto;
-import com.example.ordermanagement.dto.CustomerInsertDto;
-import com.example.ordermanagement.dto.CustomerUpdateDto;
+import com.example.ordermanagement.dto.Customer.CustomerDto;
+import com.example.ordermanagement.dto.Customer.CustomerInsertDto;
+import com.example.ordermanagement.dto.Customer.CustomerUpdateDto;
 
 public interface CustomerService {
     public CustomerDto getById(long id);

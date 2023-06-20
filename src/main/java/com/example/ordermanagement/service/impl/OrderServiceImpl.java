@@ -1,9 +1,8 @@
 package com.example.ordermanagement.service.impl;
 
-import com.example.ordermanagement.dto.OrderDto;
-import com.example.ordermanagement.dto.OrderInsertDto;
-import com.example.ordermanagement.dto.OrderUpdateDto;
-import com.example.ordermanagement.entity.Order;
+import com.example.ordermanagement.dto.Order.OrderDto;
+import com.example.ordermanagement.dto.Order.OrderInsertDto;
+import com.example.ordermanagement.dto.Order.OrderUpdateDto;
 import com.example.ordermanagement.entity.Order;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
