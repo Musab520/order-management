@@ -9,5 +9,5 @@ public interface CustomerService {
     public CustomerDto getById(long id);
     public CustomerDto insert(CustomerInsertDto customerInsertDto);
     public CustomerDto update(long id, CustomerUpdateDto customerUpdateDto);
-    public void delete(long id);
+    public boolean delete(long id);
 }

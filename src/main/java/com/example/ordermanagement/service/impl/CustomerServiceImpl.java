@@ -50,10 +50,12 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public void delete(long id) {
+    public boolean delete(long id) {
         Optional<Customer> customer = customerRepository.findById(id);
         if (customer.isPresent()) {
             customerRepository.delete(customer.get());
+            return true;
         }
+        return false;
     }
 }

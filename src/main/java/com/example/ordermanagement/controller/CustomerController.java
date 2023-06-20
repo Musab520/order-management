@@ -1,6 +1,7 @@
 package com.example.ordermanagement.controller;
 
 import com.example.ordermanagement.dto.CustomerInsertDto;
+import com.example.ordermanagement.dto.CustomerUpdateDto;
 import com.example.ordermanagement.service.CustomerService;
 import com.example.ordermanagement.dto.CustomerDto;
 import jakarta.validation.Valid;
@@ -31,4 +32,26 @@ public class CustomerController {
         CustomerDto customerDto = customerService.insert(customerInsertDto);
         return ResponseEntity.ok(customerDto);
     }
+
+    @PutMapping("{id}")
+    public ResponseEntity<CustomerDto> updateCustomer(@PathVariable long id, @RequestBody @Valid CustomerUpdateDto customerUpdateDto) {
+        CustomerDto customerDto = customerService.update(id, customerUpdateDto);
+        if (customerDto != null) {
+            return ResponseEntity.ok(customerDto);
+        } else {
+            return ResponseEntity.badRequest().body(new CustomerDto());
+        }
+    }
+
+    @DeleteMapping("{id}")
+    public ResponseEntity<String> updateCustomer(@PathVariable long id) {
+        boolean success = customerService.delete(id);
+        if (success) {
+            return ResponseEntity.ok("Deleted Customer Successfully");
+        } else {
+            return ResponseEntity.badRequest().body("Error Occurred with Deletion");
+        }
+    }
+
+
 }
