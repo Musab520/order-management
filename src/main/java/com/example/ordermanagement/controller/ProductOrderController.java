@@ -13,10 +13,11 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/productOrder")
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
+//@Api(tags = "Product Order")
 public class ProductOrderController {
 
     private final ProductOrderService productOrderService;
-
+    //@ApiOperation("Get a product order by ID")
     @GetMapping("{id}")
     public ResponseEntity<ProductOrderDto> getProductOrder(@PathVariable long id) {
         ProductOrderDto productOrderDto = productOrderService.getById(id);
@@ -26,13 +27,13 @@ public class ProductOrderController {
             return ResponseEntity.badRequest().body(new ProductOrderDto());
         }
     }
-
+    //@ApiOperation("Insert a product order")
     @PostMapping
     public ResponseEntity<ProductOrderDto> insertProductOrder(@RequestBody @Valid ProductOrderInsertDto productOrderInsertDto) {
         ProductOrderDto productOrderDto = productOrderService.insert(productOrderInsertDto);
         return ResponseEntity.ok(productOrderDto);
     }
-
+    //@ApiOperation("Update an existing Product Order")
     @PutMapping("{id}")
     public ResponseEntity<ProductOrderDto> updateProductOrder(@PathVariable long id, @RequestBody @Valid ProductOrderUpdateDto productOrderUpdateDto) {
         ProductOrderDto productOrderDto = productOrderService.update(id, productOrderUpdateDto);
@@ -42,7 +43,7 @@ public class ProductOrderController {
             return ResponseEntity.badRequest().body(new ProductOrderDto());
         }
     }
-
+    //@ApiOperation("Delete a product order by ID")
     @DeleteMapping("{id}")
     public ResponseEntity<String> updateProductOrder(@PathVariable long id) {
         boolean success = productOrderService.delete(id);

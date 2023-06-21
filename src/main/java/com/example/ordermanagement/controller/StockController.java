@@ -10,15 +10,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+
 @RestController
 @RequestMapping("/api/stock")
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
+//@Api(tags = "Stock Management")
 public class StockController {
 
     private final StockService stockService;
 
     @GetMapping("{id}")
-    public ResponseEntity<StockDto> getStock(@PathVariable long id) {
+    //@ApiOperation("Get stock by ID")
+    public ResponseEntity<StockDto> getStock(
+            @PathVariable long id
+    ) {
         StockDto stockDto = stockService.getById(id);
         if (stockDto != null) {
             return ResponseEntity.ok(stockDto);
@@ -28,13 +33,20 @@ public class StockController {
     }
 
     @PostMapping
-    public ResponseEntity<StockDto> insertStock(@RequestBody @Valid StockInsertDto stockInsertDto) {
+    //@ApiOperation("Insert a new stock")
+    public ResponseEntity<StockDto> insertStock(
+            @RequestBody @Valid StockInsertDto stockInsertDto
+    ) {
         StockDto stockDto = stockService.insert(stockInsertDto);
         return ResponseEntity.ok(stockDto);
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<StockDto> updateStock(@PathVariable long id, @RequestBody @Valid StockUpdateDto stockUpdateDto) {
+    //@ApiOperation("Update an existing stock")
+    public ResponseEntity<StockDto> updateStock(
+            @PathVariable long id,
+            @RequestBody @Valid StockUpdateDto stockUpdateDto
+    ) {
         StockDto stockDto = stockService.update(id, stockUpdateDto);
         if (stockDto != null) {
             return ResponseEntity.ok(stockDto);
@@ -44,7 +56,10 @@ public class StockController {
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<String> updateStock(@PathVariable long id) {
+    //@ApiOperation("Delete a stock by ID")
+    public ResponseEntity<String> deleteStock(
+            @PathVariable long id
+    ) {
         boolean success = stockService.delete(id);
         if (success) {
             return ResponseEntity.ok("Deleted Stock Successfully");
@@ -52,6 +67,5 @@ public class StockController {
             return ResponseEntity.badRequest().body("Error Occurred with Deletion");
         }
     }
-
-
 }
+
