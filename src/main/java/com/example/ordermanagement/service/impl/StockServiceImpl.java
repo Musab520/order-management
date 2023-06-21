@@ -1,8 +1,10 @@
 package com.example.ordermanagement.service.impl;
 
+import com.example.ordermanagement.dto.Order.OrderDto;
 import com.example.ordermanagement.dto.Stock.StockDto;
 import com.example.ordermanagement.dto.Stock.StockInsertDto;
 import com.example.ordermanagement.dto.Stock.StockUpdateDto;
+import com.example.ordermanagement.entity.Order;
 import com.example.ordermanagement.entity.Stock;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -13,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import com.example.ordermanagement.repository.StockRepository;
 import com.example.ordermanagement.service.StockService;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
@@ -57,5 +61,15 @@ public class StockServiceImpl implements StockService {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public List<StockDto> getAllStocksByOrderId(OrderDto orderDto) {
+        Order order = modelMapper.map(orderDto, Order.class);
+        List<Stock> stocks = stockRepository.getAllStocksByOrderId(order);
+        List<StockDto> stockDtos = stocks.stream()
+                .map(source -> modelMapper.map(source, StockDto.class))
+                .collect(Collectors.toList());
+        return stockDtos;
     }
 }

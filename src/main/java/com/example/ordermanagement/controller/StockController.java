@@ -1,5 +1,7 @@
 package com.example.ordermanagement.controller;
 
+import com.example.ordermanagement.dto.Order.OrderDto;
+import com.example.ordermanagement.dto.Product.ProductDto;
 import com.example.ordermanagement.dto.Stock.StockInsertDto;
 import com.example.ordermanagement.dto.Stock.StockUpdateDto;
 import com.example.ordermanagement.service.StockService;
@@ -9,6 +11,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @RestController
@@ -66,6 +70,12 @@ public class StockController {
         } else {
             return ResponseEntity.badRequest().body("Error Occurred with Deletion");
         }
+    }
+
+    @GetMapping("/order/{id}/stocks")
+    public ResponseEntity<List<StockDto>> getAllStocksByOrderId(@RequestBody @Valid OrderDto order) {
+        List<StockDto> stockDtos = stockService.getAllStocksByOrderId(order);
+        return ResponseEntity.ok(stockDtos);
     }
 }
 
