@@ -1,9 +1,12 @@
 package com.example.ordermanagement.service.impl;
 
+import com.example.ordermanagement.dto.Customer.CustomerDto;
 import com.example.ordermanagement.dto.Order.OrderDto;
 import com.example.ordermanagement.dto.Order.OrderInsertDto;
 import com.example.ordermanagement.dto.Order.OrderUpdateDto;
+import com.example.ordermanagement.entity.Customer;
 import com.example.ordermanagement.entity.Order;
+import com.example.ordermanagement.service.CustomerService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -13,7 +16,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import com.example.ordermanagement.repository.OrderRepository;
 import com.example.ordermanagement.service.OrderService;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
@@ -57,5 +63,14 @@ public class OrderServiceImpl implements OrderService {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public List<OrderDto> getAllOrdersByCustomerId(long id) {
+        List<Order> orders = orderRepository.getAllOrdersByCustomerId(id);
+        List<OrderDto> orderDtos = orders.stream()
+                .map(source -> modelMapper.map(source, OrderDto.class))
+                .collect(Collectors.toList());
+        return orderDtos;
     }
 }

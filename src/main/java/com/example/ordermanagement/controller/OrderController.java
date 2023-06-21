@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RestController
 @RequestMapping("/api/order")
@@ -49,7 +51,7 @@ public class OrderController {
     ) {
         OrderDto orderDto = orderService.update(id, orderUpdateDto);
         if (orderDto != null) {
-            return ResponseEntity.ok(orderDto);
+            return ResponseEntity.status(202).body(orderDto);
         } else {
             return ResponseEntity.badRequest().body(new OrderDto());
         }
@@ -66,6 +68,11 @@ public class OrderController {
         } else {
             return ResponseEntity.badRequest().body("Error Occurred with Deletion");
         }
+    }
+    @GetMapping("/customer/{id}")
+    public ResponseEntity<List<OrderDto>> getAllOrdersByCustomerId(@PathVariable long id) {
+        List<OrderDto> orderDtos = orderService.getAllOrdersByCustomerId(id);
+        return ResponseEntity.ok(orderDtos);
     }
 }
 

@@ -1,5 +1,7 @@
 package com.example.ordermanagement.controller;
 
+import com.example.ordermanagement.dto.Order.OrderDto;
+import com.example.ordermanagement.dto.Product.ProductDto;
 import com.example.ordermanagement.dto.ProductOrder.ProductOrderInsertDto;
 import com.example.ordermanagement.dto.ProductOrder.ProductOrderUpdateDto;
 import com.example.ordermanagement.service.ProductOrderService;
@@ -9,6 +11,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/productOrder")
@@ -53,6 +57,10 @@ public class ProductOrderController {
             return ResponseEntity.badRequest().body("Error Occurred with Deletion");
         }
     }
-
+    @GetMapping("/order/{id}/products")
+    public ResponseEntity<List<ProductDto>> getAllProductsByOrderId(@RequestBody @Valid OrderDto order) {
+        List<ProductDto> productDtos = productOrderService.getAllProductsByOrderId(order);
+        return ResponseEntity.ok(productDtos);
+    }
 
 }
