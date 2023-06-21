@@ -15,19 +15,19 @@ import com.example.ordermanagement.util.JwtUtil;
 @RestController
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
-//@Api(tags = "Authentication")
+
 public class AuthController {
     private final UserService userService;
     private final JwtUtil jwtUtil;
 
-    //@ApiOperation("Register a new user")
+    //Register a new user
     @PostMapping("/signup")
     public ResponseEntity<UserDto> signup(@RequestBody @Valid UserInsertDto userInsertDto) {
         UserDto newUser = userService.insert(userInsertDto);
         return ResponseEntity.ok(newUser);
     }
 
-    //@ApiOperation("Authenticate a user and generate a JWT token")
+    //Authenticate a user and generate a JWT token
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody @Valid UserDto userDto) {
         UserDto userFound = userService.getByUsername(userDto);

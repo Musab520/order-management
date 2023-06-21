@@ -16,13 +16,13 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/order")
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
-//@Api(tags = "Order")
+
 public class OrderController {
 
     private final OrderService orderService;
 
     @GetMapping("{id}")
-    //@ApiOperation("Get an order by ID")
+    //Get an order by ID
     public ResponseEntity<OrderDto> getOrder(
             @PathVariable long id
     ) {
@@ -35,7 +35,7 @@ public class OrderController {
     }
 
     @PostMapping
-    //@ApiOperation("Insert a new order")
+    //Insert a new order
     public ResponseEntity<OrderDto> insertOrder(
             @RequestBody @Valid OrderInsertDto orderInsertDto
     ) {
@@ -44,7 +44,7 @@ public class OrderController {
     }
 
     @PutMapping("{id}")
-    //@ApiOperation("Update an existing order")
+    //Update an existing order
     public ResponseEntity<OrderDto> updateOrder(
             @PathVariable long id,
             @RequestBody @Valid OrderUpdateDto orderUpdateDto
@@ -58,7 +58,7 @@ public class OrderController {
     }
 
     @DeleteMapping("{id}")
-    //@ApiOperation("Delete an order by ID")
+    //Delete an order by ID
     public ResponseEntity<String> deleteOrder(
             @PathVariable long id
     ) {

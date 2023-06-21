@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/product")
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
-//@Api(tags = "Product")
+
 public class ProductController {
 
     private final ProductService productService;

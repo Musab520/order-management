@@ -18,13 +18,13 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/stock")
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
-//@Api(tags = "Stock Management")
+
 public class StockController {
 
     private final StockService stockService;
 
     @GetMapping("{id}")
-    //@ApiOperation("Get stock by ID")
+    //Get stock by ID
     public ResponseEntity<StockDto> getStock(
             @PathVariable long id
     ) {
@@ -37,7 +37,7 @@ public class StockController {
     }
 
     @PostMapping
-    //@ApiOperation("Insert a new stock")
+    //Insert a new stock
     public ResponseEntity<StockDto> insertStock(
             @RequestBody @Valid StockInsertDto stockInsertDto
     ) {
@@ -46,7 +46,7 @@ public class StockController {
     }
 
     @PutMapping("{id}")
-    //@ApiOperation("Update an existing stock")
+    //Update an existing stock
     public ResponseEntity<StockDto> updateStock(
             @PathVariable long id,
             @RequestBody @Valid StockUpdateDto stockUpdateDto
@@ -60,7 +60,7 @@ public class StockController {
     }
 
     @DeleteMapping("{id}")
-    //@ApiOperation("Delete a stock by ID")
+    //Delete a stock by ID
     public ResponseEntity<String> deleteStock(
             @PathVariable long id
     ) {
