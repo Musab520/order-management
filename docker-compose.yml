@@ -1,0 +1,28 @@
+version: '3.9'
+
+services:
+  mariadb:
+    image: mariadb:latest
+    container_name: maria_order
+    environment:
+      - MYSQL_DATABASE=orderManagement
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=root
+      - MYSQL_ROOT_PASSWORD=root
+    ports:
+      - 3307:3306
+    volumes:
+      - /mariadb-order:/var/lib/mysql
+  app:
+    image: 'order-rest-api:latest'
+    container_name: order-rest-api
+    depends_on:
+      - mariadb
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://maria_order:3306/orderManagement?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - SERVER_PORT=9090
+    ports:
+      - 9090:9090
