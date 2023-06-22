@@ -9,5 +9,5 @@ docker build -t order-rest-api .
 ```
 ### Run application using docker compose
 ```bash
-docker-compose up
+docker compose up
 ```
