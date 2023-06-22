@@ -1,0 +1,393 @@
+openapi: 3.0.0
+info:
+  title: orderManagement
+  version: 1.0.0
+servers:
+  - url: http://localhost:9090
+components:
+  securitySchemes:
+    noauthAuth:
+      type: http
+      scheme: noauth
+    bearerAuth:
+      type: http
+      scheme: bearer
+security:
+  - bearerAuth: []
+tags:
+  - name: Customer
+  - name: Auth
+  - name: Order
+  - name: Stock
+  - name: Product
+  - name: ProductOrder
+paths:
+  /api/customer/3:
+    get:
+      tags:
+        - Customer
+      summary: Get Customer
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/customer:
+    post:
+      tags:
+        - Customer
+      summary: Post Customer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                firstName: Yahya
+                lastName: Abuasi
+                bornAt: '2001-05-20'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/customer/2:
+    put:
+      tags:
+        - Customer
+      summary: Update Customer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                firstName: Musab
+                lastName: Abuasi
+                bornAt: '2001-05-20'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Customer
+      summary: Delete Customer
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/auth/login:
+    post:
+      tags:
+        - Auth
+      summary: Login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                username: musab
+                password: musab123
+      security:
+        - noauthAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/auth/signup:
+    post:
+      tags:
+        - Auth
+      summary: Signup
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                email: abuasimusab@gmail.com
+                username: musab
+                password: musab123
+      security:
+        - noauthAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/order/2:
+    get:
+      tags:
+        - Order
+      summary: Get Order
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/order:
+    post:
+      tags:
+        - Order
+      summary: Post Order
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                customer:
+                  id: '1'
+                orderedAt: '2023-06-20'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/order/1:
+    put:
+      tags:
+        - Order
+      summary: Update Order
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                customer:
+                  id: '4'
+                orderedAt: '2023-06-21'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Order
+      summary: Delete Order
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/stock/1:
+    get:
+      tags:
+        - Stock
+      summary: Get Stock
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    put:
+      tags:
+        - Stock
+      summary: Update Stock
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                quantity: '6'
+                updateAt: '2023-06-20'
+                product:
+                  id: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Stock
+      summary: Delete Stock
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/stock:
+    post:
+      tags:
+        - Stock
+      summary: Post Stock
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                quantity: '5'
+                updateAt: '2023-06-20'
+                product:
+                  id: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/product/1:
+    get:
+      tags:
+        - Product
+      summary: Get Product
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    put:
+      tags:
+        - Product
+      summary: Update Product
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                slug: sprite-can
+                name: Sprite Can
+                reference: ABC123
+                price: 29.99
+                vat: 0.15
+                stockable: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Product
+      summary: Delete Product
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/product:
+    post:
+      tags:
+        - Product
+      summary: Post Product
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                slug: cocacola-can
+                name: Cocacola Can
+                reference: ABC123
+                price: 29.99
+                vat: 0.15
+                stockable: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/productOrder/1:
+    get:
+      tags:
+        - ProductOrder
+      summary: Get Product Order
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    put:
+      tags:
+        - ProductOrder
+      summary: Update Product Order
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                product:
+                  id: 2
+                order:
+                  id: 2
+                quantity: 3
+                price: 39.99
+                vat: 0.15
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - ProductOrder
+      summary: Delete Product Order
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/productOrder:
+    post:
+      tags:
+        - ProductOrder
+      summary: Post Product Order
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                product:
+                  id: 7
+                order:
+                  id: 2
+                quantity: 2
+                price: 29.99
+                vat: 0.15
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/order/customer/3:
+    get:
+      tags:
+        - default
+      summary: Get All Orders By Customer ID
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/productOrder/order/2/products:
+    get:
+      tags:
+        - default
+      summary: Get All Products By Order ID
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/stock/order/2/stocks:
+    get:
+      tags:
+        - default
+      summary: Get All Stocks By Order ID
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}

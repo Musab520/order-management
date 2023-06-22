@@ -22,7 +22,7 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((authz) -> authz
-                        .requestMatchers("/api/auth/login", "/api/auth/signup","/swagger-ui/**","/api-docs/**").permitAll()
+                        .requestMatchers("/api/auth/login", "/api/auth/signup","/swagger-ui/**","/api-docs/**","/order-management-api.yml").permitAll()
                         .anyRequest().authenticated()
                 );
         http.csrf().disable();
