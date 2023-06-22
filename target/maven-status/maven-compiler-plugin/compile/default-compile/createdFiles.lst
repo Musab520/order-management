@@ -35,6 +35,7 @@ com/example/ordermanagement/dto/Customer/CustomerInsertDto.class
 com/example/ordermanagement/controller/CustomerController.class
 com/example/ordermanagement/service/ProductOrderService.class
 com/example/ordermanagement/dto/Stock/StockInsertDto.class
+com/example/ordermanagement/config/SpringDocsConfiguration.class
 com/example/ordermanagement/config/SecurityConfig.class
 com/example/ordermanagement/service/CustomerService.class
 com/example/ordermanagement/dto/User/CustomUserDetails.class

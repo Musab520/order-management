@@ -3,6 +3,7 @@
 /home/datablock/order-management/src/main/java/com/example/ordermanagement/dto/Customer/CustomerUpdateDto.java
 /home/datablock/order-management/src/main/java/com/example/ordermanagement/service/impl/CustomerServiceImpl.java
 /home/datablock/order-management/src/main/java/com/example/ordermanagement/dto/Customer/CustomerDto.java
+/home/datablock/order-management/src/main/java/com/example/ordermanagement/config/SpringDocsConfiguration.java
 /home/datablock/order-management/src/main/java/com/example/ordermanagement/service/StockService.java
 /home/datablock/order-management/src/main/java/com/example/ordermanagement/service/OrderService.java
 /home/datablock/order-management/src/main/java/com/example/ordermanagement/dto/Order/OrderUpdateDto.java
